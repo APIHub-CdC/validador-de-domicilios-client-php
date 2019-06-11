@@ -32,7 +32,8 @@ class ValidadorDeDomiciliosApiTest extends \PHPUnit_Framework_TestCase
     public function testGetValidador(){ 
         $x_api_key = "your_api_key"; 
         $username = "your_username"; 
-        $password = "your_password"; 
+        $password = "your_password";
+        $request = new \APIHub\Client\Model\Persona();
         $request->setPrimerNombre("XXXXXXXX"); 
         $request->setSegundoNombre(null); 
         $request->setApellidoPaterno("XXXXXXXX"); 

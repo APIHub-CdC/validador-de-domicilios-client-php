@@ -106,4 +106,3 @@ Class KeyHandler{
         return openssl_free_key($this->private_key) && openssl_free_key($this->public_key);
     }
 }
-?>

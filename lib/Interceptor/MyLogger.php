@@ -17,4 +17,3 @@ class MyLogger extends Logger
         parent::__construct($name, [$streamHandler]);
 	}
 }
-?>

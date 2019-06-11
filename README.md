@@ -131,7 +131,7 @@ public function setUp()
     $handler = \GuzzleHttp\HandlerStack::create();
     $handler->push($events->add_signature_header('x-signature'));
     $handler->push($events->verify_signature_header('x-signature'));
-
+    
     $client = new \GuzzleHttp\Client([
         'handler' => $handler,
         'verify' => false
@@ -150,6 +150,7 @@ public function testGetValidador()
   $x_api_key = "your_api_key";
   $username = "your_username";
   $password = "your_password";
+  $request = new \APIHub\Client\Model\Persona();
   $request->setPrimerNombre("XXXXXXXX");
   $request->setSegundoNombre(null);
   $request->setApellidoPaterno("XXXXXXXX");
@@ -182,7 +183,6 @@ public function testGetValidador()
       echo 'Exception when calling ValidadorDeDomiciliosApi->getValidador: ', $e->getMessage(), PHP_EOL;
   }
 }
-?>
 ```
 ## Pruebas unitarias
 

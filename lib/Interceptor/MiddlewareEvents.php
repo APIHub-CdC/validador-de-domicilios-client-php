@@ -94,4 +94,3 @@ function build_error($code, $message){
     
     return $new_reponse;
 }
-?>

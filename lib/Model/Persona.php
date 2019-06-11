@@ -57,6 +57,7 @@ class Persona implements ModelInterface, ArrayAccess
         'domicilio' => 'domicilio'
     ];
 
+
     protected static $setters = [
         'primer_nombre' => 'setPrimerNombre',
         'segundo_nombre' => 'setSegundoNombre',
@@ -68,6 +69,7 @@ class Persona implements ModelInterface, ArrayAccess
         'curp' => 'setCurp',
         'domicilio' => 'setDomicilio'
     ];
+
 
     protected static $getters = [
         'primer_nombre' => 'getPrimerNombre',
@@ -101,7 +103,6 @@ class Persona implements ModelInterface, ArrayAccess
         return self::$apihubModelName;
     }
 
-
     protected $container = [];
 
     public function __construct(array $data = null)
@@ -124,16 +125,16 @@ class Persona implements ModelInterface, ArrayAccess
         if ($this->container['primer_nombre'] === null) {
             $invalidProperties[] = "'primer_nombre' can't be null";
         }
-        if ((mb_strlen($this->container['primer_nombre']) > 100)) {
-            $invalidProperties[] = "invalid value for 'primer_nombre', the character length must be smaller than or equal to 100.";
+        if ((mb_strlen($this->container['primer_nombre']) > 30)) {
+            $invalidProperties[] = "invalid value for 'primer_nombre', the character length must be smaller than or equal to 30.";
         }
 
         if ((mb_strlen($this->container['primer_nombre']) < 0)) {
             $invalidProperties[] = "invalid value for 'primer_nombre', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['segundo_nombre']) && (mb_strlen($this->container['segundo_nombre']) > 50)) {
-            $invalidProperties[] = "invalid value for 'segundo_nombre', the character length must be smaller than or equal to 50.";
+        if (!is_null($this->container['segundo_nombre']) && (mb_strlen($this->container['segundo_nombre']) > 30)) {
+            $invalidProperties[] = "invalid value for 'segundo_nombre', the character length must be smaller than or equal to 30.";
         }
 
         if (!is_null($this->container['segundo_nombre']) && (mb_strlen($this->container['segundo_nombre']) < 0)) {
@@ -174,8 +175,8 @@ class Persona implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'rfc', must be conform to the pattern /^([A-ZÑ,&amp;]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\\\d]{3})?$/.";
         }
 
-        if (!is_null($this->container['curp']) && !preg_match("/^([A-Z][AEIOUX][A-Z]{2}\\\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\\\d])(\\\\d)$/", $this->container['curp'])) {
-            $invalidProperties[] = "invalid value for 'curp', must be conform to the pattern /^([A-Z][AEIOUX][A-Z]{2}\\\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\\\d])(\\\\d)$/.";
+        if (!is_null($this->container['curp']) && !preg_match("/^([A-Z][AEIOUX][A-Z]{2}\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\d])(\\d)$/", $this->container['curp'])) {
+            $invalidProperties[] = "invalid value for 'curp', must be conform to the pattern /^([A-Z][AEIOUX][A-Z]{2}\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\d])(\\d)$/.";
         }
 
         return $invalidProperties;
@@ -193,8 +194,8 @@ class Persona implements ModelInterface, ArrayAccess
 
     public function setPrimerNombre($primer_nombre)
     {
-        if ((mb_strlen($primer_nombre) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $primer_nombre when calling Persona., must be smaller than or equal to 100.');
+        if ((mb_strlen($primer_nombre) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $primer_nombre when calling Persona., must be smaller than or equal to 30.');
         }
         if ((mb_strlen($primer_nombre) < 0)) {
             throw new \InvalidArgumentException('invalid length for $primer_nombre when calling Persona., must be bigger than or equal to 0.');
@@ -212,8 +213,8 @@ class Persona implements ModelInterface, ArrayAccess
 
     public function setSegundoNombre($segundo_nombre)
     {
-        if (!is_null($segundo_nombre) && (mb_strlen($segundo_nombre) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $segundo_nombre when calling Persona., must be smaller than or equal to 50.');
+        if (!is_null($segundo_nombre) && (mb_strlen($segundo_nombre) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $segundo_nombre when calling Persona., must be smaller than or equal to 30.');
         }
         if (!is_null($segundo_nombre) && (mb_strlen($segundo_nombre) < 0)) {
             throw new \InvalidArgumentException('invalid length for $segundo_nombre when calling Persona., must be bigger than or equal to 0.');
@@ -301,7 +302,7 @@ class Persona implements ModelInterface, ArrayAccess
     public function setRfc($rfc)
     {
 
-        if (!is_null($rfc) && (!preg_match("/^([A-ZÑ,&amp;]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\\\d]{3})?$/", $rfc))) {
+        if (!is_null($rfc) && (!preg_match("/^([A-ZÑ,&amp;]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\d]{3})?$/", $rfc))) {
             throw new \InvalidArgumentException("invalid value for $rfc when calling Persona., must conform to the pattern /^([A-ZÑ,&amp;]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\\\d]{3})?$/.");
         }
 
@@ -318,8 +319,8 @@ class Persona implements ModelInterface, ArrayAccess
     public function setCurp($curp)
     {
 
-        if (!is_null($curp) && (!preg_match("/^([A-Z][AEIOUX][A-Z]{2}\\\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\\\d])(\\\\d)$/", $curp))) {
-            throw new \InvalidArgumentException("invalid value for $curp when calling Persona., must conform to the pattern /^([A-Z][AEIOUX][A-Z]{2}\\\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\\\d])(\\\\d)$/.");
+        if (!is_null($curp) && (!preg_match("/^([A-Z][AEIOUX][A-Z]{2}\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\d])(\\d)$/", $curp))) {
+            throw new \InvalidArgumentException("invalid value for $curp when calling Persona., must conform to the pattern /^([A-Z][AEIOUX][A-Z]{2}\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\\d])(\\d)$/.");
         }
 
         $this->container['curp'] = $curp;
