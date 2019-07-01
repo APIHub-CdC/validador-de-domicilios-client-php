@@ -2,11 +2,12 @@
     "name": "/",
     "description": "",
     "keywords": [
+        "apihub",
         "php",
         "sdk",
         "api"
     ],
-    "license": "proprietary",
+    "homepage": "http://developer.circulodecredito.com.mx",
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
